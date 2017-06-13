@@ -1,0 +1,31 @@
+<html>
+<head>
+    <title>Index Page</title>
+</head>
+<body>
+    <h1>Welcome to the Thunder Dome!</h1>
+    <h4>Create A New Pet!</h4>
+    <form action="create" method="post">
+        <label>Nickname: </label>
+        <input type="text" name="nickname" />
+        <label>Type: </label>
+        <input type="text" name="type" />
+        <label>User: </label>
+        <select name="user_id">
+            {% for user in users %}
+                <option value="{{ user.id }}">{{ user.first_name }} {{ user.last_name }}</option>
+            {% endfor %}
+        </select>
+        <input type="submit" value="Create Pet" />
+    </form>
+    <h4>All Pets</h4>
+    {% for pet in pets %}
+        <p>ID: {{ pet.id }}</p>
+        <p>Nickname: {{ pet.nickname }}</p>
+        <p>Type: {{ pet.type }}</p>
+
+        <p>User: {{ pet.user_firstname }} {{ pet.user_lastname }}</p>
+
+    {% endfor %}
+</body>
+</html>
